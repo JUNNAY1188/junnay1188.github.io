@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - AI & Machine Learning Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .section-title {
+            @apply text-3xl font-bold text-gray-800 mb-8 text-center;
+        }
+        .skill-tag {
+            @apply bg-sky-100 text-sky-800 text-sm font-medium mr-2 mb-2 px-3 py-1 rounded-full;
+        }
+        .project-card {
+            @apply bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-700">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-800">Your Name</h1>
+                    <p class="text-md text-gray-600">AI & Machine Learning Engineer</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#projects" class="text-gray-600 hover:text-sky-600">Projects</a>
+                    <a href="#skills" class="text-gray-600 hover:text-sky-600">Skills</a>
+                    <a href="#contact" class="text-gray-600 hover:text-sky-600">Contact</a>
+                    <a href="https://github.com/your-username" target="_blank" class="text-gray-600 hover:text-sky-600">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.65.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-sky-600 text-white">
+        <div class="container mx-auto px-6 py-20 text-center">
+            <h2 class="text-4xl font-bold mb-2">Pioneering AI Solutions</h2>
+            <p class="text-lg mb-8">Specializing in building intelligent systems with a focus on deep learning, NLP, and computer vision.</p>
+            <a href="#contact" class="bg-white text-sky-600 font-bold py-3 px-6 rounded-full hover:bg-gray-100 transition-colors duration-300">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-20">
+        <div class="container mx-auto px-6 max-w-4xl">
+             <h2 class="section-title">About Me</h2>
+             <p class="text-center text-lg text-gray-600 leading-relaxed">
+                Hello! I'm a passionate AI developer with a strong background in machine learning and software engineering. I thrive on solving complex problems and turning data into actionable insights. My journey in AI has been driven by a curiosity to understand and replicate intelligence. I have experience developing and deploying machine learning models for real-world applications, from predictive analytics to natural language understanding. Let's build the future together.
+             </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="bg-gray-100 py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Programming & Frameworks</h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">Hugging Face</span>
+                        <span class="skill-tag">Keras</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">AI & ML Domains</h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-tag">Natural Language Processing (NLP)</span>
+                        <span class="skill-tag">Computer Vision (CV)</span>
+                        <span class="skill-tag">Reinforcement Learning</span>
+                        <span class="skill-tag">Generative AI</span>
+                        <span class="skill-tag">Predictive Modeling</span>
+                        <span class="skill-tag">Time Series Analysis</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Tools & Platforms</h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-tag">Git & GitHub</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">AWS (S3, SageMaker)</span>
+                        <span class="skill-tag">Google Cloud AI Platform</span>
+                        <span class="skill-tag">Jupyter Notebooks</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">My Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <img class="h-56 w-full object-cover" src="https://placehold.co/600x400/3498db/ffffff?text=Sentiment+Analyzer" alt="Sentiment Analysis Project">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Sentiment Analysis Engine</h3>
+                        <p class="text-gray-600 mb-4">Developed an NLP model to classify text sentiment with 95% accuracy using a transformer-based architecture on the IMDB dataset.</p>
+                        <a href="#" class="text-sky-600 font-semibold hover:underline">View on GitHub &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <img class="h-56 w-full object-cover" src="https://placehold.co/600x400/2ecc71/ffffff?text=Image+Classifier" alt="Image Classification Project">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Real-time Image Classifier</h3>
+                        <p class="text-gray-600 mb-4">Built a computer vision system using a CNN to identify objects in a video stream, deployed as a lightweight web application.</p>
+                        <a href="#" class="text-sky-600 font-semibold hover:underline">View on GitHub &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <img class="h-56 w-full object-cover" src="https://placehold.co/600x400/e74c3c/ffffff?text=AI+Chatbot" alt="AI Chatbot Project">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Conversational AI Chatbot</h3>
+                        <p class="text-gray-600 mb-4">Created an intelligent chatbot for customer service using generative models, reducing response times by 40%.</p>
+                        <a href="#" class="text-sky-600 font-semibold hover:underline">View on GitHub &rarr;</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-gray-800 text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">Interested in Collaborating?</h2>
+            <p class="text-lg mb-8">I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision.</p>
+            <a href="mailto:your-email@example.com" class="bg-sky-600 text-white font-bold py-3 px-8 rounded-full hover:bg-sky-700 transition-colors duration-300">Email Me</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-6">
+        <div class="container mx-auto px-6 text-center text-gray-600">
+            <p>&copy; 2025 Your Name. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
