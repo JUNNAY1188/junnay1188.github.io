@@ -3,164 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - AI & Machine Learning Portfolio</title>
+    <title>Mohammad Junaid - AI & Data Science Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
         }
         .section-title {
-            @apply text-3xl font-bold text-gray-800 mb-8 text-center;
+            @apply text-4xl font-bold text-gray-800 mb-2;
         }
-        .skill-tag {
-            @apply bg-sky-100 text-sky-800 text-sm font-medium mr-2 mb-2 px-3 py-1 rounded-full;
+        .section-subtitle {
+            @apply text-lg text-gray-500 mb-12;
+        }
+        .skill-card {
+            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-in-out;
         }
         .project-card {
-            @apply bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300;
+            @apply bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out group;
+        }
+        .cert-card {
+            @apply bg-white p-5 rounded-lg shadow-md flex items-center space-x-4 hover:shadow-xl hover:bg-sky-50 transition-all duration-300;
+        }
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-700">
 
-    <!-- Header Section -->
-    <header class="bg-white shadow-md">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div>
-                    <h1 class="text-2xl font-bold text-gray-800">Your Name</h1>
-                    <p class="text-md text-gray-600">AI & Machine Learning Engineer</p>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <a href="#projects" class="text-gray-600 hover:text-sky-600">Projects</a>
-                    <a href="#skills" class="text-gray-600 hover:text-sky-600">Skills</a>
-                    <a href="#contact" class="text-gray-600 hover:text-sky-600">Contact</a>
-                    <a href="https://github.com/your-username" target="_blank" class="text-gray-600 hover:text-sky-600">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.65.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
-                    </a>
-                </div>
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gray-800">M. Junaid</a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#about" class="text-gray-600 hover:text-sky-600">About</a>
+                <a href="#projects" class="text-gray-600 hover:text-sky-600">Projects</a>
+                <a href="#skills" class="text-gray-600 hover:text-sky-600">Skills</a>
+                <a href="#education" class="text-gray-600 hover:text-sky-600">Education</a>
+                <a href="#certifications" class="text-gray-600 hover:text-sky-600">Certifications</a>
+                <a href="#contact" class="bg-sky-600 text-white font-bold py-2 px-4 rounded-full hover:bg-sky-700 transition-colors duration-300">Contact</a>
             </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-800 focus:outline-none">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#about" class="block py-2 px-4 text-sm hover:bg-gray-100">About</a>
+            <a href="#projects" class="block py-2 px-4 text-sm hover:bg-gray-100">Projects</a>
+            <a href="#skills" class="block py-2 px-4 text-sm hover:bg-gray-100">Skills</a>
+            <a href="#education" class="block py-2 px-4 text-sm hover:bg-gray-100">Education</a>
+            <a href="#certifications" class="block py-2 px-4 text-sm hover:bg-gray-100">Certifications</a>
+            <a href="#contact" class="block py-2 px-4 text-sm hover:bg-gray-100">Contact</a>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-sky-600 text-white">
-        <div class="container mx-auto px-6 py-20 text-center">
-            <h2 class="text-4xl font-bold mb-2">Pioneering AI Solutions</h2>
-            <p class="text-lg mb-8">Specializing in building intelligent systems with a focus on deep learning, NLP, and computer vision.</p>
-            <a href="#contact" class="bg-white text-sky-600 font-bold py-3 px-6 rounded-full hover:bg-gray-100 transition-colors duration-300">Get In Touch</a>
+    <section class="hero-bg text-white">
+        <div class="container mx-auto px-6 py-24 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
+                <h1 class="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">Mohammad Junaid</h1>
+                <p class="text-xl md:text-2xl font-light text-sky-300 mb-6">AI & Machine Learning Engineer</p>
+                <p class="text-gray-200 mb-8 max-w-lg">
+                    Results-oriented AI graduate with hands-on experience in developing and implementing machine learning models, from data preprocessing to deployment. Passionate about solving complex problems with data-driven solutions.
+                </p>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <a href="#contact" class="bg-white text-sky-800 font-bold py-3 px-6 rounded-full hover:bg-gray-200 transition-colors duration-300">Get in Touch</a>
+                    <a href="https://github.com/junayy1188" target="_blank" class="text-white border-2 border-white font-bold py-3 px-6 rounded-full hover:bg-white hover:text-sky-800 transition-colors duration-300">View GitHub</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://placehold.co/400x400/FFFFFF/2c5364?text=MJ" alt="Mohammad Junaid" class="rounded-full border-4 border-sky-400 shadow-2xl">
+            </div>
         </div>
     </section>
 
     <!-- About Me Section -->
-    <section id="about" class="py-20">
-        <div class="container mx-auto px-6 max-w-4xl">
-             <h2 class="section-title">About Me</h2>
-             <p class="text-center text-lg text-gray-600 leading-relaxed">
-                Hello! I'm a passionate AI developer with a strong background in machine learning and software engineering. I thrive on solving complex problems and turning data into actionable insights. My journey in AI has been driven by a curiosity to understand and replicate intelligence. I have experience developing and deploying machine learning models for real-world applications, from predictive analytics to natural language understanding. Let's build the future together.
-             </p>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="bg-gray-100 py-20">
+    <section id="about" class="py-20 bg-white fade-in-section">
         <div class="container mx-auto px-6">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="max-w-4xl mx-auto">
-                <div class="mb-6">
-                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Programming & Frameworks</h3>
-                    <div class="flex flex-wrap">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">PyTorch</span>
-                        <span class="skill-tag">TensorFlow</span>
-                        <span class="skill-tag">Scikit-learn</span>
-                        <span class="skill-tag">Hugging Face</span>
-                        <span class="skill-tag">Keras</span>
-                        <span class="skill-tag">Pandas</span>
-                        <span class="skill-tag">NumPy</span>
-                    </div>
-                </div>
-                <div class="mb-6">
-                    <h3 class="text-xl font-semibold text-gray-700 mb-3">AI & ML Domains</h3>
-                    <div class="flex flex-wrap">
-                        <span class="skill-tag">Natural Language Processing (NLP)</span>
-                        <span class="skill-tag">Computer Vision (CV)</span>
-                        <span class="skill-tag">Reinforcement Learning</span>
-                        <span class="skill-tag">Generative AI</span>
-                        <span class="skill-tag">Predictive Modeling</span>
-                        <span class="skill-tag">Time Series Analysis</span>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Tools & Platforms</h3>
-                    <div class="flex flex-wrap">
-                        <span class="skill-tag">Git & GitHub</span>
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">AWS (S3, SageMaker)</span>
-                        <span class="skill-tag">Google Cloud AI Platform</span>
-                        <span class="skill-tag">Jupyter Notebooks</span>
-                        <span class="skill-tag">SQL</span>
-                    </div>
-                </div>
+            <div class="text-center">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">A brief introduction to my background and passions.</p>
+            </div>
+            <div class="max-w-4xl mx-auto text-center text-lg text-gray-600 leading-relaxed">
+                I am a dedicated Artificial Intelligence graduate, proficient in Python, deep learning frameworks, and the full data lifecycle. My academic journey, highlighted by a thesis in medical imaging and projects in conversational AI, has equipped me with the skills to turn complex data into impactful solutions. As a proactive leader, I've had the privilege of organizing major tech expos and fostering a community of learners as the President of my university's AI Society. I am eager to apply my technical expertise and innovative spirit to an entry-level AI/ML Engineer role.
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20">
+    <section id="projects" class="py-20 fade-in-section">
         <div class="container mx-auto px-6">
-            <h2 class="section-title">My Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-
-                <!-- Project 1 -->
+            <div class="text-center">
+                <h2 class="section-title">My Projects</h2>
+                <p class="section-subtitle">Here are some of the key projects I've worked on.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Thesis Project -->
                 <div class="project-card">
-                    <img class="h-56 w-full object-cover" src="https://placehold.co/600x400/3498db/ffffff?text=Sentiment+Analyzer" alt="Sentiment Analysis Project">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Sentiment Analysis Engine</h3>
-                        <p class="text-gray-600 mb-4">Developed an NLP model to classify text sentiment with 95% accuracy using a transformer-based architecture on the IMDB dataset.</p>
-                        <a href="#" class="text-sky-600 font-semibold hover:underline">View on GitHub &rarr;</a>
+                    <div class="p-8">
+                        <div class="flex items-center mb-4">
+                             <i class="fas fa-brain text-4xl text-sky-500 mr-4"></i>
+                            <h3 class="text-2xl font-bold">Brain Tumor Detection & Segmentation</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Developed a deep learning model to accurately detect and segment brain tumors from MRI scans. Engineered the complete data pipeline, including image preprocessing, data augmentation, and model training.</p>
+                        <p class="text-gray-600 mb-6">This thesis project achieved high precision in identifying tumor boundaries, showcasing advanced computer vision techniques.</p>
+                        <div class="flex flex-wrap mb-4">
+                            <span class="bg-gray-200 text-gray-800 text-xs font-semibold mr-2 mb-2 px-2.5 py-0.5 rounded-full">TensorFlow</span>
+                            <span class="bg-gray-200 text-gray-800 text-xs font-semibold mr-2 mb-2 px-2.5 py-0.5 rounded-full">Keras</span>
+                            <span class="bg-gray-200 text-gray-800 text-xs font-semibold mr-2 mb-2 px-2.5 py-0.5 rounded-full">Computer Vision</span>
+                            <span class="bg-gray-200 text-gray-800 text-xs font-semibold mr-2 mb-2 px-2.5 py-0.5 rounded-full">Medical Imaging</span>
+                        </div>
+                        <a href="#" class="text-sky-600 font-semibold hover:underline group-hover:text-sky-800">View on GitHub <i class="fas fa-arrow-right ml-1"></i></a>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
+                <!-- AI Agent Project -->
                 <div class="project-card">
-                    <img class="h-56 w-full object-cover" src="https://placehold.co/600x400/2ecc71/ffffff?text=Image+Classifier" alt="Image Classification Project">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Real-time Image Classifier</h3>
-                        <p class="text-gray-600 mb-4">Built a computer vision system using a CNN to identify objects in a video stream, deployed as a lightweight web application.</p>
-                        <a href="#" class="text-sky-600 font-semibold hover:underline">View on GitHub &rarr;</a>
+                     <div class="p-8">
+                        <div class="flex items-center mb-4">
+                             <i class="fas fa-plane-departure text-4xl text-sky-500 mr-4"></i>
+                            <h3 class="text-2xl font-bold">AI Agent for Airport Services</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Designed and built a conversational AI agent to automate customer service for airport inquiries like flight status, gate information, and baggage claims.</p>
+                        <p class="text-gray-600 mb-6">Utilized Natural Language Processing (NLP) to understand user intent and provide real-time, accurate responses, integrated with mock airport data systems.</p>
+                         <div class="flex flex-wrap mb-4">
+                            <span class="bg-gray-200 text-gray-800 text-xs font-semibold mr-2 mb-2 px-2.5 py-0.5 rounded-full">NLP</span>
+                            <span class="bg-gray-200 text-gray-800 text-xs font-semibold mr-2 mb-2 px-2.5 py-0.5 rounded-full">Conversational AI</span>
+                            <span class="bg-gray-200 text-gray-800 text-xs font-semibold mr-2 mb-2 px-2.5 py-0.5 rounded-full">AI Agents</span>
+                        </div>
+                        <a href="#" class="text-sky-600 font-semibold hover:underline group-hover:text-sky-800">View on GitHub <i class="fas fa-arrow-right ml-1"></i></a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <img class="h-56 w-full object-cover" src="https://placehold.co/600x400/e74c3c/ffffff?text=AI+Chatbot" alt="AI Chatbot Project">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Conversational AI Chatbot</h3>
-                        <p class="text-gray-600 mb-4">Created an intelligent chatbot for customer service using generative models, reducing response times by 40%.</p>
-                        <a href="#" class="text-sky-600 font-semibold hover:underline">View on GitHub &rarr;</a>
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white fade-in-section">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <h2 class="section-title">Technical Skills</h2>
+                <p class="section-subtitle">A summary of my technical abilities.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="skill-card text-center">
+                    <i class="fas fa-code text-4xl text-sky-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Languages</h3>
+                    <p>Python</p>
+                </div>
+                <div class="skill-card text-center">
+                    <i class="fas fa-cogs text-4xl text-sky-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Frameworks</h3>
+                    <p>TensorFlow, Keras, Scikit-learn, Pandas, NumPy</p>
+                </div>
+                <div class="skill-card text-center">
+                    <i class="fas fa-brain text-4xl text-sky-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Core Concepts</h3>
+                    <p>ML, DL, CV, NLP, Data Preprocessing & Evaluation</p>
+                </div>
+                <div class="skill-card text-center">
+                    <i class="fas fa-cloud text-4xl text-sky-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Cloud & Tools</h3>
+                    <p>Azure AI, AWS, Jupyter Notebooks, Git, SQL</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Education Section -->
+    <section id="education" class="py-20 fade-in-section">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <h2 class="section-title">Education</h2>
+                <p class="section-subtitle">My academic background.</p>
+            </div>
+            <div class="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-lg flex items-center space-x-6">
+                <i class="fas fa-graduation-cap text-5xl text-sky-500"></i>
+                <div>
+                    <p class="text-gray-500">Oct 2020 - Oct 2024</p>
+                    <h3 class="text-2xl font-bold text-gray-800">Bachelor of Science in Artificial Intelligence</h3>
+                    <p class="text-lg text-gray-600">The Islamia University of Bahawalpur</p>
+                    <p class="mt-2 text-md font-semibold text-sky-700">GPA: 3.38 / 4.00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-20 bg-white fade-in-section">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <h2 class="section-title">Certifications</h2>
+                <p class="section-subtitle">My professional certifications and credentials.</p>
+            </div>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="cert-card">
+                    <i class="fab fa-microsoft text-3xl text-blue-600"></i>
+                    <div>
+                        <h4 class="font-bold">Azure AI Fundamentals (AI-900)</h4>
+                        <p class="text-sm text-gray-500">Microsoft Certified</p>
                     </div>
                 </div>
-
+                 <div class="cert-card">
+                    <i class="fab fa-aws text-3xl text-orange-500"></i>
+                    <div>
+                        <h4 class="font-bold">LLMOps and FMOps</h4>
+                        <p class="text-sm text-gray-500">AWS Certified</p>
+                    </div>
+                </div>
+                <div class="cert-card">
+                    <i class="fab fa-google text-3xl text-green-500"></i>
+                    <div>
+                        <h4 class="font-bold">Google AI Essentials</h4>
+                        <p class="text-sm text-gray-500">Google Certified</p>
+                    </div>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-atom text-3xl text-cyan-500"></i>
+                    <div>
+                        <h4 class="font-bold">Data Science and Analytics</h4>
+                        <p class="text-sm text-gray-500">HP Certified</p>
+                    </div>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-chart-line text-3xl text-purple-500"></i>
+                    <div>
+                        <h4 class="font-bold">Data Analysis & Business Intelligence</h4>
+                        <p class="text-sm text-gray-500">Digiskills.pk</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="bg-gray-800 text-white py-20">
+    <section id="contact" class="hero-bg py-20 text-white">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-4">Interested in Collaborating?</h2>
-            <p class="text-lg mb-8">I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision.</p>
-            <a href="mailto:your-email@example.com" class="bg-sky-600 text-white font-bold py-3 px-8 rounded-full hover:bg-sky-700 transition-colors duration-300">Email Me</a>
+            <h2 class="text-4xl font-bold mb-4">Let's Build Something Amazing</h2>
+            <p class="text-lg mb-8 max-w-2xl mx-auto">I'm currently seeking entry-level opportunities and am open to collaboration. If you have a project in mind or just want to connect, feel free to reach out!</p>
+            <a href="mailto:junisattar1188@gmail.com" class="bg-white text-sky-800 font-bold py-4 px-8 rounded-full hover:bg-gray-200 transition-colors duration-300 text-lg">
+                <i class="fas fa-envelope mr-2"></i> Email Me
+            </a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white py-6">
-        <div class="container mx-auto px-6 text-center text-gray-600">
-            <p>&copy; 2025 Your Name. All Rights Reserved.</p>
+    <footer class="bg-gray-800 text-gray-400 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                 <a href="https://github.com/junayy1188" target="_blank" class="hover:text-white"><i class="fab fa-github fa-2x"></i></a>
+                 <a href="#" class="hover:text-white"><i class="fab fa-linkedin fa-2x"></i></a>
+                 <a href="#" class="hover:text-white"><i class="fab fa-twitter fa-2x"></i></a>
+            </div>
+            <p>&copy; 2025 Mohammad Junaid. All Rights Reserved.</p>
         </div>
     </footer>
 
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Fade-in sections on scroll
+        const sections = document.querySelectorAll('.fade-in-section');
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
+
